@@ -7,18 +7,38 @@ Page({
     hasMore: true,
   },
 
-  onLoad() {
-    const topMVdatas = async () => {
-      const res = await getTopMV(0, 10)
-      this.setData({ topMVs: res.data })
+  onLoad: async function () {
+    this.getTopMVData(0)
+  },
+
+  getTopMVData: async function (offset) {
+    if (!this.data.hasMore && offset !== 0) return
+    const res = await getTopMV(offset)
+    let newData = this.data.topMVs
+    if (offset === 0) {
+      newData = res.data
+    } else {
+      newData = newData.concat(res.data)
     }
-    topMVdatas()
+    this.setData({ topMVs: newData })
+    this.setData({ hasMore: res.hasMore })
+    if (offset === 0) {
+      wx.stopPullDownRefresh()
+    }
+  },
+
+  onPullDownRefresh: async function () {
+    this.getTopMVData(0)
   },
 
   onReachBottom: async function () {
-    if (!this.data.hasMore) return
-    const res = await getTopMV(this.data.topMVs.length)
-    this.setData({ topMVs: this.data.topMVs.concat(res.data) })
-    this.setData({ hasMore: res.hasMore })
+    this.getTopMVData(this.data.topMVs.length)
+  },
+
+  handleVideoClick: function (en) {
+    const id = en.currentTarget.dataset.item.id
+    wx.navigateTo({
+      url: `/pages/detail-video/index?id=${id}`,
+    })
   },
 })
