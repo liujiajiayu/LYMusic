@@ -1,66 +1,35 @@
 // pages/home-music/index.js
+import { getBanners } from '../../service/api_music'
+import queryRect from '../../untils/selector-rect'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    banners: [],
+    swiperHeight: 0,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-
+    this.getPageData()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  getPageData() {
+    getBanners().then(res => {
+      console.log(res)
+      this.setData({ banners: res.banners })
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  handleSwiper() {
+    //动态获取轮播高度
+    queryRect('.swiper-image').then(res => {
+      const rect = res[0]
+      this.setData({ swiperHeight: rect.height })
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  handleSearcClick() {
+    wx.navigateTo({
+      url: '../detail-search/index',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

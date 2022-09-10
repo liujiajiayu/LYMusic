@@ -1,2 +1,28 @@
 <!--pages/home-music/index.wxml-->
-<text>你好啊，李银河</text>
+<!-- 搜索框 -->
+<van-search 
+  placeholder="搜索音乐"
+  background="#fafafa"
+  shape="round"
+  disabled
+  bind:click-input="handleSearcClick"
+/>
+<!-- 轮播图 -->
+<swiper 
+  class="banner" 
+  indicator-dots 
+  autoplay
+  circular
+  style="height:{{swiperHeight}}px"
+>
+  <block wx:for="{{banners}}" wx:key="bannerId">
+    <swiper-item class="banner-item">
+      <image 
+        class="swiper-image" 
+        src="{{item.pic}}" 
+        mode="widthFix"
+        bindload="handleSwiper" 
+      />
+    </swiper-item>
+  </block>
+</swiper>

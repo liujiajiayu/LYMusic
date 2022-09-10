@@ -1,4 +1,7 @@
-const baseUrl = 'http://123.207.32.32:9001'
+//vercel部署
+// const baseUrl = 'http://123.207.32.32:9001'
+//本地环境
+const baseUrl = 'http://localhost:3000'
 
 class HYRequest {
   request(url, method, params) {

@@ -1,2 +1,12 @@
 <!--pages/detail-video/index.wxml-->
-<text>pages/detail-video/index.wxml</text>
+<video src="{{mvURLInfo.url}}" class="video" autoplay loop></video>
+<view class="box">
+  <view class="conta">
+    <view class="title">{{mvDetail.name}}</view>
+    <view class="author">{{mvDetail.artistName}}</view>
+    <view class="author">{{mvDetail.publishTime}}</view>
+  </view>
+  <view>
+    <view>推荐视频</view>
+  </view>
+</view>

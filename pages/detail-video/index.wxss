@@ -1,1 +1,30 @@
 /* pages/detail-video/index.wxss */
+page {
+  padding-top: 225px;
+}
+
+.video {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.box {
+  padding: 20rpx;
+  height: 100%;
+}
+
+.conta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30%;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.author {
+  color: #999;
+  font-size: 0.8rem;
+}

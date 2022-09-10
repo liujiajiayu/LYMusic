@@ -18,7 +18,7 @@ Page({
     if (offset === 0) {
       newData = res.data
     } else {
-      newData = newData.concat(res.data)
+      newData = [...newData, ...res.data]
     }
     this.setData({ topMVs: newData })
     this.setData({ hasMore: res.hasMore })
