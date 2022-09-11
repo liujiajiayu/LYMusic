@@ -23,7 +23,6 @@ Page({
     })
 
     getRelatedVideo(id).then(res => {
-      console.log(res.data)
       this.setData({ relatedVideos: res.data })
     })
   },

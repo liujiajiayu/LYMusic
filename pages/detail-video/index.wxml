@@ -1,5 +1,11 @@
 <!--pages/detail-video/index.wxml-->
-<video src="{{mvURLInfo.url}}" class="video" autoplay loop></video>
+<video 
+  src="{{mvURLInfo.url}}" 
+  class="video" 
+  autoplay 
+  loop
+  referrer-policy="origin"
+></video>
 <view class="box">
   <view class="conta">
     <view class="title">{{mvDetail.name}}</view>

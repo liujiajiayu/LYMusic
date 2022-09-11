@@ -26,3 +26,11 @@
     </swiper-item>
   </block>
 </swiper>
+
+<!-- 小标题 -->
+<view class="recommend-song">
+  <area-header 
+    title="推荐歌曲" 
+    showRight="{{true}}"
+  ></area-header>
+</view>

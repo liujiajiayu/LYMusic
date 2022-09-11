@@ -1,6 +1,9 @@
 // pages/home-music/index.js
 import { getBanners } from '../../service/api_music'
 import queryRect from '../../untils/selector-rect'
+import throttle from '../../untils/throttle'
+
+const throttleQueryRect = throttle(queryRect, 1000)
 
 Page({
   data: {
@@ -14,14 +17,14 @@ Page({
 
   getPageData() {
     getBanners().then(res => {
-      console.log(res)
       this.setData({ banners: res.banners })
     })
   },
 
   handleSwiper() {
     //动态获取轮播高度
-    queryRect('.swiper-image').then(res => {
+    //节流
+    throttleQueryRect('.swiper-image').then(res => {
       const rect = res[0]
       this.setData({ swiperHeight: rect.height })
     })
